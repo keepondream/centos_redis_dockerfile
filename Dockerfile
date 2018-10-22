@@ -21,7 +21,7 @@ COPY ./config/redis-master.conf /config
 ADD ./config/redis-slave.conf /config
 ADD ./config/redis-sentinel1.conf /config
 ADD ./config/redis-sentinel2.conf /config
-COPY ./config/redis-sentinel3.conf /config
+ADD ./config/redis-sentinel3.conf /config
 # 定义容器运行中的匿名卷,即在运行时自动挂载为匿名卷.即共享容器中的该目录
 VOLUME /config
 # 暴露6379端口
