@@ -4,7 +4,7 @@ FROM centos:latest
 MAINTAINER dream
 # 定义临时变量,只有在指定docker build . 构建容器时有效
 # 定义基础工具
-ARG bags='epel-release curl net-tools vim wget'
+ARG bags='epel-release curl net-tools vim wget net-tools'
 # 定义当前工作目录,类似 cd
 WORKDIR /config
 # 创建redis用户和用户组
