@@ -1,0 +1,2 @@
+# centos_redis_dockerfile
+基于centos构建的redis镜像
