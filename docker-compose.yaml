@@ -1,0 +1,35 @@
+# 版本
+version: "3.6"
+# 服务
+services:
+  # 主redis 映射到宿主机6380端口
+  master:
+    image: keepondream/redis
+    stdin_open: true
+    ports:
+      - "6380:6379"
+    networks:
+      ownnetwork:
+        ipv4_address: 172.10.0.2
+    tty: true
+    command: redis-server /config/redis-master.conf
+  # 从redis 具体端口没有指定,可以后根据 哨兵 sentinel 获取
+  slave:
+    image: keepondream/redis
+    command: /bin/bash -c "sleep 2 && redis-server --slaveof redis-master 6379"
+    links:
+      - master:redis-master
+    stdin_open: true
+    depends_on:
+      - master
+    networks:
+      ownnetwork:
+# 自定义网络 使用 bridge桥接驱动 指定网段
+networks:
+  ownnetwork:
+    driver: bridge
+    ipam:
+      config:
+      -
+        subnet: 172.10.0.0/16
+
