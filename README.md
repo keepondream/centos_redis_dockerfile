@@ -13,3 +13,5 @@
  5. 使用 docker ps 查看运行容器
  6. 使用 docker exec -it <容器名称> bash 进入容器,之后在主节点中设置 key 看看其余从节点 是否同步
 ```
+
+#### docker安装 https://blog.df5g.com/article/25
